@@ -8,14 +8,15 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: false
         },
-        image: {
-            type: Sequelize.STRING,
-            allowNull: true,
-        },
         author: {
             type: Sequelize.STRING,
             allowNull: false
+        },
+        image: {
+            type: Sequelize.TEXT('long'),
+            allowNull: true,
         }
+        
         
     });
 

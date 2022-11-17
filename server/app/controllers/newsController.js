@@ -27,6 +27,7 @@ exports.create = (req, res) => {
             res.send(data);
         }).catch(err => {
             res.status(500).json({message: err.message});
+            console.log(err);
             
         });
 }
