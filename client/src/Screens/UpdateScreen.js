@@ -5,7 +5,7 @@ import UpdateNews from '../components/UpdateNews'
 import { useParams } from 'react-router-dom'
 
 const UpdateScreen = () => {
-    const { id } = useParams
+    const { id } = useParams();
   return (
     <Container>
         <UpdateNews id={id}/>

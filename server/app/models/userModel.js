@@ -15,6 +15,9 @@ module.exports = (sequelize, Sequelize) => {
         },
         admin: {
         type: Sequelize.BOOLEAN,
+        },
+        refreshToken: {
+        type: Sequelize.STRING
         }
     });
      

@@ -4,7 +4,11 @@ import ReactFileBase64 from 'react-file-base64'
 
 import { useNavigate } from 'react-router-dom';
 
-import * as api from '../axios/index.js'
+import { useDispatch } from 'react-redux';
+
+import { createNews } from '../actions/newsActions.js';
+
+//import * as api from '../axios/index.js'
 
 const SubmitNews = () => {
 
@@ -16,14 +20,18 @@ const SubmitNews = () => {
     });
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+
 
 
   return (
     <>
         <Form onSubmit={(e) => {
             e.preventDefault();
-            api.createNews(newsData);
-            navigate('/');
+            //api.createNews(newsData);
+            dispatch(createNews(newsData));
+            navigate('/dashboard');
 
         }}>
             <Form.Group className="text-center py-3">

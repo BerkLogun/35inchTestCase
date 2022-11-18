@@ -4,11 +4,24 @@ import Card from 'react-bootstrap/Card';
 import moment from 'moment';
 import { LinkContainer } from 'react-router-bootstrap'
 
-import {MdModeEdit, MdDelete} from 'react-icons/md';
+import { MdModeEdit, MdDelete } from 'react-icons/md';
+import { useDispatch } from 'react-redux';
 
-import { deleteNews, updateNews } from '../axios/index.js';
+//import { deleteNews, updateNews } from '../axios/index.js';
+import {deleteNews, updateNews} from '../actions/newsActions.js';
+
 
 const adminNews = ({news}) => {
+
+    // weird solution for an error that i dont get what causes ://  it just works fine on other components without this line
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const dispatch = useDispatch();
+
+    
+
+
+
+  
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src={news.image} />
@@ -38,7 +51,11 @@ const adminNews = ({news}) => {
             // Delete Button
             }
             
-                <MdDelete size="30" color="red" style={{cursor: 'pointer'}} onClick={() => deleteNews(news.id)}/>
+                <MdDelete 
+                size="30" 
+                color="red" 
+                style={{cursor: 'pointer'}} 
+                onClick={() => {dispatch(deleteNews(news.id))}}/>
            
 
             

@@ -7,6 +7,7 @@ import HomeScreen from './Screens/HomeScreen'
 import CreateScreen from './Screens/CreateScreen'
 import Dashboard from './Screens/Dashboard'
 import UpdateScreen from './Screens/UpdateScreen'
+import AuthScreen from './Screens/AuthScreen'
 
 
 import Header from './components/Header'
@@ -26,6 +27,7 @@ function App() {
               <Route path="/create" element={<CreateScreen />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/dashboard/update/:id" element={<UpdateScreen/>}/>
+              <Route path="/auth" element={<AuthScreen />} />
             </Routes>
           </Container>
         </main>

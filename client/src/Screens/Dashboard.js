@@ -3,10 +3,13 @@ import { Spinner, Row, Col } from 'react-bootstrap'
 
 import News from '../components/adminNews.js'
 
-import { fetchNews } from '../axios/index.js';
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchNews } from '../actions/newsActions.js'
+
+//import { fetchNews } from '../axios/index.js';
 
 const Dashboard = () => {
-    const [news, setNews] = useState([]);
+    /*const [news, setNews] = useState([]);
 
     useEffect(() => {
       const getNews = async () => {
@@ -17,8 +20,14 @@ const Dashboard = () => {
 
       getNews();
     }, []);
+    */
 
-
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(fetchNews());
+    }, [dispatch])
+    
+    const news = useSelector((state) => state.news);
 
 
   return (

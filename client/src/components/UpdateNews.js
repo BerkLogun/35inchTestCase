@@ -4,9 +4,15 @@ import ReactFileBase64 from 'react-file-base64'
 
 import { useNavigate } from 'react-router-dom';
 
-import { updateNews, fetchSingleNews } from '../axios/index.js'
+import { useDispatch } from 'react-redux';
+
+import { fetchSingleNews } from '../axios/index.js'
+
+import { updateNews } from '../actions/newsActions.js'
 
 const UpdateNews = ({id}) => {
+
+    const dispatch = useDispatch();
 
     const [newsData, setNewsData] = useState({
         title: '',
@@ -34,8 +40,9 @@ const UpdateNews = ({id}) => {
     <>
         <Form onSubmit={(e) => {
             e.preventDefault();
-            updateNews(id,newsData);
-            navigate('/');
+            //updateNews(id,newsData);
+            dispatch(updateNews(id,newsData));
+            navigate('/dashboard');
 
         }}>
             <Form.Group className="text-center py-3">
