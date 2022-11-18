@@ -32,7 +32,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <h1>Admin Dashboard</h1>
+      <h3>Admin Dashboard</h3>
       {!news.length ? <Spinner animation="border" role="status" /> : 
         <Row>
           {news.map((news) => (

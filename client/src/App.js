@@ -8,6 +8,8 @@ import CreateScreen from './Screens/CreateScreen'
 import Dashboard from './Screens/Dashboard'
 import UpdateScreen from './Screens/UpdateScreen'
 import AuthScreen from './Screens/AuthScreen'
+import SingleNewsScreen from './Screens/SingleNewsScreen'
+
 
 
 import Header from './components/Header'
@@ -24,10 +26,12 @@ function App() {
           <Container>
             <Routes>
               <Route path="/" element={<HomeScreen />} exact />
+              <Route path="/news/:id" element={<SingleNewsScreen />} />
               <Route path="/create" element={<CreateScreen />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/dashboard/update/:id" element={<UpdateScreen/>}/>
               <Route path="/auth" element={<AuthScreen />} />
+
             </Routes>
           </Container>
         </main>

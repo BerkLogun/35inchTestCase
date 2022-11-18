@@ -146,7 +146,7 @@ exports.login = async (req, res) => {
 }
 
 
-exports.getToken = async (req, res) => {
+exports.refreshTokens = async (req, res) => {
     try{
         const id = req.params.id;
         const user = await User.findOne({where: {id: id}});
@@ -156,8 +156,25 @@ exports.getToken = async (req, res) => {
 
         const refreshToken = user.refreshToken;
         if(refreshToken){
-            res.status(200).json({refreshToken});
+           // res.status(200).json({refreshToken});
+
+            jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, decodedRefreshToken) => {
+                if(err){
+                    return res.status(403).json({message: "Invalid refresh token"});
+                }
+                const accessToken = jwt.sign({
+                    email: decodedRefreshToken.email,
+                    admin: decodedRefreshToken.admin
+                }, process.env.ACCESS_TOKEN_SECRET,
+                {
+                    expiresIn: '3m'
+                });
+                res.status(200).json({accessToken});
+                
+            }
+            );
         }
+        
 
     }catch (err) {
         res.status(500).json({message: err.message});

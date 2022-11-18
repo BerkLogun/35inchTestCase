@@ -40,7 +40,7 @@ const HomeScreen = () => {
 
     // Creating a grid with cards of news
     <>
-      <h1>Latest News</h1>
+      <h3>Latest News</h3>
       {!news.length ? <Spinner animation="border" role="status" /> : 
         <Row>
           {news.map((news) => (

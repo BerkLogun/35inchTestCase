@@ -4,6 +4,14 @@ const API = axios.create({
     baseURL: 'http://localhost:5000/'
 });
 
+
+API.interceptors.request.use((req) => {
+    if(localStorage.getItem('user'))
+        req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('user')).accessToken}`;
+    return req;
+});
+
+
 // fetch all news 
 export const fetchNews = async () => API.get('/news');
 
@@ -27,9 +35,9 @@ export const signin = async (formData) => await API.post('users/signin', formDat
 
 export const logOut = async (id) => await API.get(`/users/logout/${id}`, id)
 
-export const getRefreshToken = async (id) => {
+export const refreshAccessToken = async (id) => {
     try{
-        const {data} = await API.get(`users/gettoken/${id}`);
+        const {data} = await API.get(`users/refresh/${id}`);
         console.log(data)
         return data;
     }

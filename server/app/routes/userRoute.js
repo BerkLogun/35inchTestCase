@@ -12,7 +12,7 @@ module.exports = app => {
 
     router.get("/logout/:id", users.logout);
 
-    router.get("/gettoken/:id", users.getToken);
+    router.get("/refresh/:id", users.refreshTokens);
 
     app.use('/users', router);
 };

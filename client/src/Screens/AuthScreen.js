@@ -6,6 +6,8 @@ import { signup, signin } from '../actions/userActions.js'
 import Message from '../components/Message'
 import { useNavigate } from 'react-router-dom';
 
+import { GoogleLogin } from 'react-google-login';
+import { FcGoogle } from 'react-icons/fc'
 
 
 
@@ -25,6 +27,14 @@ const AuthScreen = ({history}) => {
     const [form, setForm] = useState(initialFormData)  // inputs are stored in this form variable
     const [login, setLogin] = useState(true)
     const [checked, setChecked] = useState(false);
+
+    const googleSuccess = async (res) => {
+        console.log(res)
+    }
+
+    const googleFailure = (error) => {
+        console.log(error)
+    }
 
 
     const dispatch = useDispatch()
@@ -73,10 +83,38 @@ const AuthScreen = ({history}) => {
                             </Form.Group>
 
 
-                            <div className="d-grid gap-2">
-                                <Button variant="primary" type="submit" className="mt-3">
+                            <div className="d-grid gap-2 mt-3">
+                                <Button variant="warning" type="submit" className="mt-3">
                                     Login
                                 </Button>
+                            </div>
+                            {
+                            // tried to add Google Login to the project but failed because got an error 
+
+                            }
+
+                            <div className="d-grid gap-2 mt-3">
+
+                                <GoogleLogin
+                                    clientId="99101970829-042e0r1iik2nd262tdvnlu0d8s7lh5lc.apps.googleusercontent.com"
+                                    buttonText="Login"
+                                    onSuccess={googleSuccess}
+                                    onFailure={googleFailure}
+                                    render={renderProps => (
+                                        <Button variant="info" onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                                            <div className="text-center">
+                                                Login with Google
+
+                                                <FcGoogle size="20" className="ml-5" />
+                                            </div>
+
+                                        </Button>
+                                      )}
+
+
+                                    cookiePolicy={'single_host_origin'}
+                                /> 
+                                
                             </div>
 
                             <div className="text-center mt-3">

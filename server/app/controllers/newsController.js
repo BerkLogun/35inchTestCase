@@ -49,10 +49,10 @@ exports.findAll = (req, res) => {
 
 // Find a single News with an id
 
-exports.findOne = (req, res) => {
+exports.findOneNews = (req, res) => {
     const id = req.params.id;
 
-    News.findByPk(id)
+    News.findOne({where: {id: id}})
         .then(data => {
             res.send(data);
         }).catch(err => {

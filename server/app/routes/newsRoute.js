@@ -9,7 +9,7 @@ module.exports = app => {
     router.get("/", news.findAll);
 
     // Retrieve a single News with id
-    router.get("/:id", news.findOne);
+    router.get("/:id", news.findOneNews);
 
     // Update a News with id
     router.put("/update/:id", news.update);

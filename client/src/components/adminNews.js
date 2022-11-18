@@ -8,7 +8,7 @@ import { MdModeEdit, MdDelete } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 
 //import { deleteNews, updateNews } from '../axios/index.js';
-import {deleteNews, updateNews} from '../actions/newsActions.js';
+import {deleteNews} from '../actions/newsActions.js';
 
 
 const adminNews = ({news}) => {
@@ -23,7 +23,8 @@ const adminNews = ({news}) => {
 
   
   return (
-    <Card style={{ width: '18rem' }}>
+    <div className="mb-5">
+      <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src={news.image} />
       <Card.Header>
         <h3>{news.title}</h3>
@@ -34,7 +35,7 @@ const adminNews = ({news}) => {
           </Card.Text>
         <Card.Text>Author: {news.author}</Card.Text>
         <Card.Subtitle className="mb-2 text-muted">Updated: {moment(news.updatedAt).fromNow()}</Card.Subtitle>
-        <Button variant="primary">See Full</Button>
+       
       </Card.Body>
         <Card.Footer style={{display: 'flex', justifyContent: 'space-between'}}>
             <LinkContainer to={`update/${news.id}`} style={{cursor: 'pointer'}}>
@@ -64,6 +65,9 @@ const adminNews = ({news}) => {
 
 
     </Card>
+
+    </div>
+    
   )
 }
 

@@ -5,6 +5,9 @@ export default (news = [], action) => {
         case FETCH_ALL:
             return action.payload;
 
+        case FETCH_ONE:
+            return action.payload;
+
         case CREATE:
             return [...news, action.payload];
 
